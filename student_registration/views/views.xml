@@ -1,0 +1,114 @@
+<odoo>
+  <data>
+        <record id="student_registration_tree"     model="ir.ui.view">
+        <field name="name">Student_Registration_Tree</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+        <tree string="Student Registrations Tree">
+                    <field name="code"/>
+                    <field name="name_id"/>
+        </tree>
+        </field>
+        </record>
+
+        <record id="student_registration_form"     model="ir.ui.view">
+        <field name="name">Student_Registration_Form</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+        <form string="Student Registrations Form">
+                <button name="go_to_invoiced" type="object" string="Go to Invoiced Accounting"  class="btn-primary" />
+        <!--                #######################################################################       -->
+            <header>
+                <button name="bake_the_state" type="object" string="Bake to Draft" class="btn-danger" states="confirmed,canceled" />
+        <!--                #######################################################################       -->
+                <button name="move_the_state" type="object" string="confirmed"  class="btn-success" states="draft" />
+        <!--                #######################################################################       -->
+
+                <button name="bake_the_state" type="object" string="Canceled Registration" class="btn-danger" states="draft" />
+        <!--                #######################################################################       -->
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,canceled"/>
+        <!--                #######################################################################       -->
+            </header>
+            <sheet>
+                <group>
+                    <field name="code"/>
+                    <field name="name_id"/>
+                    <field name="phone"/>
+                    <field name="age"/>
+                    <field name="date"/>
+                    <field name="currency_id"/>
+                    <field name="amount"/>
+                </group>
+            </sheet>
+        </form>
+        </field>
+        </record>
+
+        <record id="student_registration_calendar" model="ir.ui.view">
+                <field name="name">Student_Registration_Calendar</field>
+                <field name="model">student.registration</field>
+                <field name="arch" type="xml">
+                    <calendar string="Student Registrations Calendar" date_start="date">
+                        <field name="name_id"/>
+                    </calendar>
+                </field>
+            </record>
+
+        <record id="student_registration_kanban" model="ir.ui.view">
+            <field name="name">Registration</field>
+            <field name="model">student.registration</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_example">
+                    <field name="code"/>
+                    <field name="name_id"/>
+                    <field name="state"/>
+                    <field name="date"/>
+                    <field name="amount"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_card">
+                                <div class="o_kanban_content">
+                                    <strong>
+                                            <field name="code"/>
+                                    </strong>
+                                    <div>
+                                            👤 <field name="name_id"/>
+                                    </div>
+                                    <div>
+                                        📅 <field name="date"/>
+                                    </div>
+                                    <div>
+                                        💰 <field name="amount"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_footer">
+                                    <field name="state" widget="badge"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+</record>
+
+        <record id="student_registration_search"   model="ir.ui.view">
+        <field name="name">Student_Registration_Search</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <search string="Student Registrations Search">
+          <field name="code" string="ID"/>
+          <field name="name_id" string="Name"/>
+        </search>
+        </field>
+        </record>
+
+        <record id="seq_student_registration" model="ir.sequence">
+              <field name="name">Student Registration</field>
+              <field name="code">student.registration</field>
+              <field name="prefix">RG</field>
+              <field name="padding">6</field>
+            </record>
+
+
+  </data>
+</odoo>
