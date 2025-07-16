@@ -16,7 +16,9 @@
         <field name="model">student.registration</field>
         <field name="arch" type="xml">
         <form string="Student Registrations Form">
-                <button name="go_to_invoiced" type="object" string="Go to Invoiced Accounting"  class="btn-primary" />
+
+
+<!--                <button name="go_to_invoiced" type="object" string="Go to Invoiced Accounting"  class="btn-primary" />-->
         <!--                #######################################################################       -->
             <header>
                 <button name="bake_the_state" type="object" string="Bake to Draft" class="btn-danger" states="confirmed,canceled" />
@@ -30,6 +32,22 @@
         <!--                #######################################################################       -->
             </header>
             <sheet>
+                <div class="oe_button_box" name="button_box">
+                        <button name="action_create_invoice"
+                            string="Create Invoice"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-plus"
+                            style="float: left;"/>
+                        <button name="go_to_invoiced"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-list-ul"
+                                style="float: right;">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                </div>
+
                 <group>
                     <field name="code"/>
                     <field name="name_id"/>
@@ -54,7 +72,7 @@
                 </field>
             </record>
 
-        <record id="student_registration_kanban" model="ir.ui.view">
+        <record id="student_registration_kanban"   model="ir.ui.view">
             <field name="name">Registration</field>
             <field name="model">student.registration</field>
             <field name="arch" type="xml">
@@ -96,16 +114,17 @@
         <field name="model">student.registration</field>
         <field name="arch" type="xml">
             <search string="Student Registrations Search">
-          <field name="code" string="ID"/>
-          <field name="name_id" string="Name"/>
-        </search>
+              <field name="code" string="ID"/>
+              <field name="name_id" string="Name"/>
+<!--              <filter string="Students Only" domain="[('name_id.is_student','=',True)]" name="filter_student" context="{'default_name_id.is_student': 1}" help="Show only student records" />-->
+            </search>
         </field>
         </record>
 
-        <record id="seq_student_registration" model="ir.sequence">
+        <record id="seq_student_registration"      model="ir.sequence">
               <field name="name">Student Registration</field>
               <field name="code">student.registration</field>
-              <field name="prefix">RG</field>
+              <field name="prefix">RX</field>
               <field name="padding">6</field>
             </record>
 

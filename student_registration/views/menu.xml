@@ -1,24 +1,6 @@
 <odoo>
   <data>
 
-
-        <record id="student_registration_actions" model="ir.actions.act_window">
-          <field name="name">Registration</field>
-          <field name="res_model">student.registration</field>
-          <field name="view_mode">tree,form,calendar,kanban</field>
-        </record>
-
-        <record id="res_partner_actions" model="ir.actions.act_window">
-          <field name="name">Students</field>
-          <field name="res_model">res.partner</field>
-          <field name="view_mode">tree,form</field>
-        </record>
-        <record id="invoices_actions" model="ir.actions.act_window">
-          <field name="name">Invoices</field>
-          <field name="res_model">account.move</field>
-          <field name="view_mode">tree,form</field>
-        </record>
-
         <menuitem id="registration_root" name="Registration" sequence="10"/>
 
             <menuitem id="student_registration_ID_cate" name="Student Registration" parent="registration_root" action="student_registration_actions" sequence="20"/>

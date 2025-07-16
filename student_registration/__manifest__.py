@@ -27,6 +27,7 @@
         'views/views.xml',
         'views/res_partner_inherit.xml',
         'views/accounting_move.xml',
+        'views/actions.xml',
         'views/menu.xml',
     ],
 
